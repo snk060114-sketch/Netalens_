@@ -56,10 +56,25 @@ a{color:var(--teal);text-underline-offset:3px}button,input,select,textarea{font:
     font:600 .68rem/1.2 "Inter",sans-serif;
   }
 
-  .mobile-nav a[aria-current="page"]{
-    background:#fff;
-    color:var(--navy);
-  }
+.mobile-nav a{
+  position:relative;
+  isolation:isolate;
+}
+
+.mobile-nav a[aria-current="page"]{
+  background:transparent;
+  color:var(--navy);
+}
+
+.mobile-nav a[aria-current="page"]::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  border-radius:11px;
+  background:#fff;
+  view-transition-name:nav-active;
+}
 }
 /* NetaLens — page transitions */
 @view-transition {
