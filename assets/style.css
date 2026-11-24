@@ -61,3 +61,40 @@ a{color:var(--teal);text-underline-offset:3px}button,input,select,textarea{font:
     color:var(--navy);
   }
 }
+/* NetaLens — page transitions */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root) {
+  animation: page-exit .18s ease both;
+}
+
+::view-transition-new(root) {
+  animation: page-enter .3s ease both;
+}
+
+@keyframes page-exit {
+  to {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}
