@@ -7,7 +7,7 @@ const pages=[
 const current=location.pathname.split("/").pop()||"index.html";
 const nav=pages.map(([href,label])=>`<a href="${href}" ${current===href?'aria-current="page"':""}>${label}</a>`).join("");
 const header=`<header class="site-header"><a class="brand" href="index.html"><span class="brand-mark">N</span><span>NetaLens</span></a><nav class="nav" aria-label="Main navigation">${nav}</nav><div class="header-actions"><a class="button small" href="sources.html">Methodology ↗</a></div></header>`;
-const mobile=`<nav class="mobile-nav" aria-label="Quick navigation"><a href="index.html">Home</a><a href="leaders.html">People</a><a href="performance.html">Data</a><a href="sources.html">Sources</a></nav>`;
+const mobile=`<nav class="mobile-nav" aria-label="Research shortcuts"> <a href="performance.html" ${current==="performance.html"?'aria-current="page"':""}>Performance</a> <a href="statements.html" ${current==="statements.html"?'aria-current="page"':""}>Statements</a> <a href="constituency.html" ${current==="constituency.html"?'aria-current="page"':""}>Constituency</a> <a href="transparency.html" ${current==="transparency.html"?'aria-current="page"':""}>Transparency</a> </nav>`;
 const footer=`<footer class="footer"><div class="container footer-inner"><span>© 2026 NetaLens · Public information, carefully examined.</span><span><a href="sources.html">Sources & methodology</a> · <a href="transparency.html">Transparency</a></span></div></footer>`;
 document.body.insertAdjacentHTML("afterbegin",header);
 document.body.insertAdjacentHTML("beforeend",mobile+footer+'<div class="toast" id="toast" role="status" aria-live="polite"></div>');
